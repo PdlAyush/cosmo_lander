@@ -5,55 +5,56 @@
             "ID": 1,
 
             "Bounds": [
-                [1.1, 2.2],
-                [2.3, 2.4],
-                [3.3, 3.4],
-                [4.0, 4.4]
+                {"x":1.3, "y": 1.4},
+                {"x":1.3, "y": 1.4},
+                {"x":1.3, "y": 1.4},
+                {"x":1.3, "y": 1.4}
             ],
 
             "Rover Path": [
-                [3.3, 4.4],
-                [2.3, 2.2],
-                [1.1, 2.3]
+                {"x":1.3, "y": 1.4},
+                {"x":5.3, "y": 1.4},
+                {"x":6.3, "y": 1.4}
             ],
 
             "UAV Path": [
-                [2.2, 2.3],
-                [1.1, 1.2],
-                [1.4, 3.2]
+                {"x":2.3, "y": 1.4},
+                {"x":4.3, "y": 1.4},
+                {"x":4.6, "y": 1.4},
+                {"x":7.3, "y": 1.4}
             ],
 
             "Point of Interest": [
                 {
                     "PID": 1,
                     "RegionID": 1,
-                    "Coordinates": [1.0,1.1],
-                    "Task":["Explore"],
-                    "Status": ["Pending"]
+                    "Coordinates": {"x":2.3, "y": 1.4},
+                    "Task":"Explore",
+                    "Status": "Pending"
                 },
         
                 {
                     "PID": 2,
                     "RegionID": 1,
-                    "Coordinates": [1.0,1.1],
-                    "Task":["Place Beacon"],
-                    "Status": ["Doing"] 
+                    "Coordinates": {"x":3.3, "y": 1.4},
+                    "Task":"Place Beacon",
+                    "Status": "Doing" 
                 },
         
                 {
                     "PID": 3,
                     "RegionID": 1,
-                    "Coordinates": [1.0,1.1],
-                    "Task":["Place Beacon"],
-                    "Status": ["Done"] 
+                    "Coordinates": {"x":4.3, "y": 1.4},
+                    "Task": "Explore",
+                    "Status": "Done"
                 },
         
                 {
                     "PID": 4,
                     "RegionID": 1,
-                    "Coordinates": [1.0,1.1],
-                    "Task":["Place Beacon"],
-                    "Status": ["Done"] 
+                    "Coordinates": {"x":5.3, "y": 1.4},
+                    "Task":"Place Beacon",
+                    "Status": "Done" 
                 }
             ]
         },
@@ -61,33 +62,39 @@
         {
             "ID": 2,
                 "Bounds": [
-                    [5.5, 6.6],
-                    [6.7, 6.8],
-                    [7.7, 7.8],
-                    [8.0, 8.4]
+                    {"x":1.3, "y": 3.4},
+                    {"x":2.3, "y": 7.4},
+                    {"x":3.3, "y": 4.4},
+                    {"x":4.3, "y": 2.4}
                 ],
+
                 "Rover Path": [
-                    [7.7, 8.8],
-                    [6.7, 6.6],
-                    [5.5, 6.7]
+                    {"x":1.3, "y": 1.4},
+                    {"x":1.3, "y": 1.4},
+                    {"x":1.3, "y": 1.4},
+                    {"x":1.3, "y": 1.4}
                 ],
+
                 "UAV Path": [
-                    [6.6, 6.7],
-                    [5.5, 5.6],
-                    [5.8, 7.6]
+                    {"x":1.3, "y": 1.4},
+                    {"x":6.3, "y": 1.4},
+                    {"x":3.3, "y": 1.4},
+                    {"x":9.3, "y": 1.4}
                 ],
+
                 "Point of Interest": [
                     {
                         "PID": 1,
                         "RegionID": 2,
-                        "Coordinates": [5.6, 6.7],
+                        "Coordinates":{"x":8.3, "y": 1.4},
                         "Task": "Explore",
                         "Status": "Doing"
                     },
+
                     {
                         "PID": 2,
                         "RegionID": 2,
-                        "Coordinates": [6.8, 7.9],
+                        "Coordinates": {"x":9.3, "y": 1.4},
                         "Task": "Place Beacon",
                         "Status": "Pending"
                     }
