@@ -24,7 +24,7 @@ class LanderServer(Node):
         self.poi_publisher_ = self.create_publisher(PointOfInterest,'lander/pois', 10)
         self.roi_publisher_ = self.create_publisher(RegionOfInterest, 'lander/rois', 10)
 
-        # Creating timer call-back functions to publish data periodically
+        
 
     def process_request(self):
         endpoint = request.endpoint
@@ -51,9 +51,15 @@ class LanderServer(Node):
             data = request.json
             script_directory = os.path.dirname(os.path.abspath(__file__))
             file_path = os.path.join(script_directory, 'roi.json')
+            existing_data = []
 
             with open(file_path, 'r') as jsonFile:
                 existing_data = json.load(jsonFile)
+            
+               
+            # Converting dictionary to list
+            if not isinstance(existing_data, list):
+                existing_data = [existing_data] 
             
             existing_data.append(data)
 
@@ -68,9 +74,14 @@ class LanderServer(Node):
             data = request.json
             script_directory = os.path.dirname(os.path.abspath(__file__))
             file_path = os.path.join(script_directory, 'poi.json')
+            existing_data = []
 
             with open(file_path, 'r') as jsonFile:
                 existing_data = json.load(jsonFile)
+            
+            # Converting dictionary to list
+            if not isinstance(existing_data, list):
+                existing_data = [existing_data] 
             
             existing_data.append(data)
 
@@ -81,7 +92,6 @@ class LanderServer(Node):
 
             return 'POI added successfully'
     
-
     def publish_roi(self, data):
         roi_msg = RegionOfInterest()
         roi_msg.region_id = data['RegionID']
@@ -91,7 +101,7 @@ class LanderServer(Node):
             coordinates = Coordinate()
             coordinates.latitude = bound['y']
             coordinates.longitude = bound['x']
-            bound.append(coordinates)
+            bounds.append(coordinates)
         roi_msg.bounds = bounds
 
         rover_path = []
