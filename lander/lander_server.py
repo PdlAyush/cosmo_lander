@@ -81,6 +81,52 @@ class LanderServer(Node):
 
             return 'POI added successfully'
     
+
+    def publish_roi(self, data):
+        roi_msg = RegionOfInterest()
+        roi_msg.region_id = data['RegionID']
+
+        bounds = []
+        for bound in data['Bounds']:
+            coordinates = Coordinate()
+            coordinates.latitude = bound['y']
+            coordinates.longitude = bound['x']
+            bound.append(coordinates)
+        roi_msg.bounds = bounds
+
+        rover_path = []
+        for rpath in data['RoverPath']:
+            coordinates = Coordinate()
+            coordinates.latitude = rpath['y']
+            coordinates.longitude = rpath['x']
+            rover_path.append(coordinates)
+        roi_msg.rover_path = rover_path
+
+        uav_path = []
+        for upath in data['UAVPath']:
+            coordinates = Coordinate()
+            coordinates.latitude = upath['y']
+            coordinates.longitude = upath['x']
+            uav_path.append(coordinates)
+        roi_msg.uav_path = uav_path
+
+        self.roi_publisher_.publish(roi_msg)
+
+    def publish_poi(self, data):
+        poi_msg = PointOfInterest()
+        poi_msg.point_id = data['PID']
+        poi_msg.region_id = data['RegionID']
+
+        coordinates = Coordinate()
+        coordinates.latitude = data['Coordinates']['y']
+        coordinates.longitude = data['Coordinates']['x']
+        poi_msg.coordinates = coordinates
+
+        poi_msg.task = data['Task']
+        poi_msg.status = data['Status']
+
+        self.poi_publisher_.publish(poi_msg)
+    
     # Run the server:
     def run(self):
         self.app.run(host='0.0.0.0', port =5000, threaded = True)
