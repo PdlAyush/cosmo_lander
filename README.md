@@ -1,2 +1,3 @@
 # cosmo_lander
-Some ROS nodes for CosmoScout's csp-vamex
+
+ROS package for the VaMEx project.

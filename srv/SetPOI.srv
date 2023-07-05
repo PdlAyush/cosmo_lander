@@ -1,0 +1,6 @@
+#Request
+string status
+int32 point_id
+
+---
+bool result
