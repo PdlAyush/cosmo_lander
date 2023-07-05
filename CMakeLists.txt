@@ -30,7 +30,17 @@ install(PROGRAMS
   DESTINATION lib/${PROJECT_NAME}/lander
 )
 
+install(PROGRAMS
+  lander/lander_server.py
+  DESTINATION lib/${PROJECT_NAME}/lander
+)
 
+install(
+  FILES
+  lander/poi.json
+  lander/roi.json
+  DESTINATION lib/${PROJECT_NAME}/lander
+)
 
 ament_export_dependencies(rosidl_default_runtime)
 ament_package()
